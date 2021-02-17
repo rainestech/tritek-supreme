@@ -26,9 +26,21 @@ trait Register {
     public function register(UsersRequest $request) {
         event(new Registered($user = $this->create($request->all(), true)));
 
-        $role = Roles::where('role', 'RECRUITER')->first();
+        if ($request->input('role') && Roles::where('role', $request->input('role'))->exists()) {
+            $role = Roles::where('role', $request->input('role'))->first();
+        } else {
+            $role = Roles::where('role', 'RECRUITER')->first();
+        }
+
         if ($role) {
             $user->roles()->attach($role->id);
+        }
+
+        if ($request->has('status')) {
+            $user->status = $request->input('status');
+            $user->firstName = $request->input('firstName');
+            $user->lastName = $request->input('lastName');
+            $user->save();
         }
 
         if ($response = $this->registered($request, $user)) {

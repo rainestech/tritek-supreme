@@ -27,13 +27,13 @@ class ProfileController extends BaseApiController {
     public function getMyProfile() {
         $user = auth('api')->user();
         if ($user->companyName) {
-            if (!$p = Recruiters::with('files', 'logo')->where('userId', auth('api')->id())->first())
+            if (!$p = Recruiters::with('docs', 'logo')->where('userId', auth('api')->id())->first())
                 abort(404, 'Recruiter Record Not Found!');
 
             return response()->json($p);
         }
 
-        if (!$p = Candidates::with('files', 'projects')->where('userId', auth('api')->id())->first())
+        if (!$p = Candidates::with('docs', 'projects')->where('userId', auth('api')->id())->first())
             abort(404, 'Candidate Record Not Found!');
 
         return response()->json($p);

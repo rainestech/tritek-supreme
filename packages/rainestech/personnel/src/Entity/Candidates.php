@@ -54,7 +54,7 @@ class Candidates extends BaseModel
     protected $with = ['user'];
     protected $appends = ['fileNo', 'projectNo'];
 
-    public function users()
+    public function user()
     {
 //        return $this->belongsToMany(Users::class, 'profiles_recruiters_user', 'uId', 'rId');
         return $this->belongsTo(Users::class, 'userId');

@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <base href="/">
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <meta content="Project Supreme Template" name="description">
+    <meta content="Project Supreme" name="description">
     <meta content="Adekola Ayoola" name="author">
     <meta content="Adekola Ayoola<adadekola@gmail.com>" name="developer">
-    <meta content="Tritek Consulting,Nigeria,Enterprise,Application,Laravel,Php,Admin,Webapp,Java,Angular,Dashboard,Typescript" name="keyword">
+    <meta content="Tritek,Nigeria,Enterprise,Application,Laravel,Php,Admin,Webapp,Java,Angular,Dashboard,Typescript" name="keyword">
     <link href="/assets/favicon.ico" rel="shortcut icon">
     <link href="/assets/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
     <link href="/assets/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -27,14 +27,9 @@
     <meta content="#ffffff" name="msapplication-TileColor">
     <meta content="/assets/ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#ffffff" name="theme-color">
-    <title>Project Supreme - Tritek Consulting</title>
-    <link rel="stylesheet" href="/styles.2eefc0d4af78b9ae9da3.css">
-</head>
-<body>
-<app-root></app-root>
-<script src="/runtime.ea1a11015b143cea98c6.js" defer></script>
-<script src="/polyfills-es5.be256f39fbf03d0912ac.js" nomodule defer></script>
-<script src="/polyfills.bf0669a7374adac61077.js" defer></script>
-<script src="/main.e4e3f49b84b3af062ef2.js" defer></script>
-</body>
+    <title>Project Supreme</title>
+    <link rel="stylesheet" href="/styles.01268248182729ec0692.css"></head>
+<body class="app">
+<!-- App Loading... -->
+<script src="/runtime.13fbcee492bab61bc98e.js" defer></script><script src="/polyfills-es5.828bd9f0e1e67ac20298.js" nomodule defer></script><script src="/polyfills.6b0ceadccbb14dfb7cb8.js" defer></script><script src="/main.51c64b08a78213afae47.js" defer></script></body>
 </html>

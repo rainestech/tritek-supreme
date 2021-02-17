@@ -98,7 +98,7 @@ class Users extends Authenticatable implements JWTSubject
      * ];
      */
 
-    protected $appends = ['privileges', 'modules', 'name', 'pivot'];
+    protected $appends = ['privileges', 'role', 'name', 'pivot'];
 
     protected $with = ['roles', 'passport'];
 
@@ -128,7 +128,17 @@ class Users extends Authenticatable implements JWTSubject
     }
 
     public function getNameAttribute() {
-        return $this->firstName . ' ' . $this->lastName;
+        if ($this->firstName) {
+            return $this->firstName . ' ' . $this->lastName;
+        }
+        return $this->username;
+    }
+
+    public function getRoleAttribute() {
+        if ($this->roles->count() > 0) {
+            return $this->roles[0]['role'];
+        }
+        return '';
     }
 
     public function getModulesAttribute() {

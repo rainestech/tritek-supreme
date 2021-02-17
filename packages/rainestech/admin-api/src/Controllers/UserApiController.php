@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Rainestech\AdminApi\Entity\Roles;
 use Rainestech\AdminApi\Entity\Tokens;
 use Rainestech\AdminApi\Entity\UserDevice;
 use Rainestech\AdminApi\Entity\Users;
@@ -244,7 +245,7 @@ class UserApiController extends BaseApiController {
         $user = Users::find($request->get('id'));
         $user->firstName = $request->get('firstName');
         $user->lastName = $request->get('lastName');
-        $user->phoneNo = $request->get('phoneNo');
+        $user->companyName = $request->get('companyName');
         $user->username = $request->get('username');
         $user->email = $request->get('email');
         $user->status = $request->get('status');
@@ -254,6 +255,18 @@ class UserApiController extends BaseApiController {
         }
 
         $user->save();
+
+        if ($request->input('role') && Roles::where('role', $request->input('role'))->exists()) {
+            $dbRoles = $user->roles;
+
+            foreach ($dbRoles as $rol) {
+                $user->roles()->detach($rol->id);
+            }
+
+            $role = Roles::where('role', $request->input('role'))->first();
+            $user->roles()->attach($role->id);
+        }
+
         return response()->json($user);
     }
 

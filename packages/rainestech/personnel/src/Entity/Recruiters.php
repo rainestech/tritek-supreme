@@ -58,10 +58,10 @@ class Recruiters extends BaseModel
 //    protected $dates = ['joinDate', 'dob'];
     protected $dateFormat = 'Y-m-d h:m:s';
 
-    protected $appends = ['fileNo', 'candNo'];
+    protected $appends = ['fileNo', 'candNo', 'name'];
     protected $with = ['user', 'logo'];
 
-    public function users()
+    public function user()
     {
 //        return $this->belongsToMany(Users::class, 'profiles_recruiters_user', 'uId', 'rId');
         return $this->belongsTo(Users::class, 'userId');
@@ -84,6 +84,10 @@ class Recruiters extends BaseModel
 
     public function getFileNoAttribute() {
         return $this->docs->count();
+    }
+
+    public function getNameAttribute() {
+        return $this->companyName;
     }
 
     public function getCandNoAttribute() {
