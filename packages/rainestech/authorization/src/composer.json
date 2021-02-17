@@ -1,0 +1,31 @@
+{
+    "name": "rainestech/authorization",
+    "description": "Admin api for user authorization management",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^8.12"
+    },
+    "require-dev": {
+        "rainestech/admin-api": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rainestech",
+            "email": "rainestech@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rainestech\\Authorization\\AccessServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Rainestech\\Authorization\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "rainestech/admin-api",
+    "description": "Admin api for user authentication and authorization management",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^8.12",
+        "tymon/jwt-auth": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rainestech",
+            "email": "rainestech@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rainestech\\AdminApi\\AdminApiServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Rainestech\\AdminApi\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
