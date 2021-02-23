@@ -27,12 +27,11 @@ class UsersRequest extends FormRequest
                     'id'  => 'integer|exists:admin_users,id',
                     'firstName'  => 'required|between:3,100|string',
                     'lastName'  => 'required|between:3,100|string',
-                    'contactEmail'  => 'email',
                     'email'  => 'required|email|unique:admin_users,email,'.$id,
                     'username'  => 'required|string|between:3,50|unique:admin_users,username,'.$id,
                     'password'  => 'nullable|string|between:6,100',
                     'oldPassword'  => 'nullable|string|between:6,100',
-                    'role'  => 'nullable|string|between:4,100|exists:admin_roles,role',
+                    'role.*.id'  => 'integer|exists:admin_roles,id',
                     'status'  => 'boolean',
                 ];
             }

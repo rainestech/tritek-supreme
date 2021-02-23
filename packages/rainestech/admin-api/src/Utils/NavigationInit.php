@@ -64,7 +64,7 @@ class NavigationInit {
             $user->lastName = 'Tech';
             $user->phoneNo = '012345678901';
             $user->status = 1;
-            $user->password = Hash::make('raines1303');
+            $user->password = Hash::make('12345678');
             $user->id = 1;
             $user->save();
 

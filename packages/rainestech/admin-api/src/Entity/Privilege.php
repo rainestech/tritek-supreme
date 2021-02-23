@@ -49,9 +49,9 @@ class Privilege extends Model {
     protected $guarded = ['id'];
     protected $casts = ['hasChildren' => 'boolean', 'onNav' => 'boolean'];
 
-    public function roles() {
-        return $this->belongsToMany(Roles::class, 'admin_role_privilege', 'privilege_id', 'role_id');
-    }
+//    public function roles() {
+//        return $this->belongsToMany(Roles::class, 'admin_role_privilege', 'privilege_id', 'role_id');
+//    }
 
     public function editor() {
         return $this->belongsTo(Users::class, 'editor');

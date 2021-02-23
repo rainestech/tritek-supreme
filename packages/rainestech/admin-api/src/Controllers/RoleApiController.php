@@ -13,7 +13,7 @@ class RoleApiController extends BaseApiController
     }
 
     public function defaultRole(RolesRequest $request) {
-        $edit = Roles::findOrFail($request->get('id'));
+        $edit = Roles::findOrFail($request->input('id'));
 
         foreach (Roles::all() as $role) {
             $role->defaultRole = false;

@@ -26,14 +26,8 @@ trait Register {
     public function register(UsersRequest $request) {
         event(new Registered($user = $this->create($request->all(), true)));
 
-        if ($request->input('role') && Roles::where('role', $request->input('role'))->exists()) {
-            $role = Roles::where('role', $request->input('role'))->first();
-        } else {
-            $role = Roles::where('role', 'RECRUITER')->first();
-        }
-
-        if ($role) {
-            $user->roles()->attach($role->id);
+        foreach ($request->input('role') as $role) {
+            $user->roles()->attach($role['id']);
         }
 
         if ($request->has('status')) {
@@ -90,7 +84,6 @@ trait Register {
     {
         return Users::create([
             'username' => $data['username'],
-            'companyName' => $data['companyName'],
             'status' => $status,
             'adminVerified' => false,
             'email' => $data['email'],

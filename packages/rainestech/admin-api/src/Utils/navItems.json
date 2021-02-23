@@ -1,28 +1,6 @@
 [
     {
-        "app": "supreme",
-        "module": "Admin",
-        "privilege": "ROLE_ADMIN_CANDIDATES",
-        "name": "Manage Candidates",
-        "url": "/admin/candidates",
-        "icon": "icon-directions",
-        "orderNo": 8,
-        "hasChildren": false,
-        "onNav": true
-    },
-    {
-        "app": "supreme",
-        "module": "Admin",
-        "privilege": "ROLE_ADMIN_RECRUITERS",
-        "name": "Manage Recruiters",
-        "url": "/admin/recruiters",
-        "icon": "icon-organization",
-        "orderNo": 9,
-        "hasChildren": false,
-        "onNav": true
-    },
-    {
-        "app": "supreme",
+        "app": "whyte",
         "module": "Admin",
         "name": "Manage Users",
         "privilege": "ROLE_ADMIN_USERS",
@@ -33,7 +11,7 @@
         "onNav": true
     },
     {
-        "app": "supreme",
+        "app": "whyte",
         "module": "Admin",
         "name": "Manage Roles",
         "privilege": "ROLE_ADMIN_ROLES",
@@ -44,7 +22,7 @@
         "onNav": true
     },
     {
-        "app": "supreme",
+        "app": "whyte",
         "module": "Admin",
         "name": "Access Control",
         "privilege": "ROLE_ADMIN_ACCESS",
@@ -54,75 +32,65 @@
         "hasChildren": false
     },
     {
-        "app": "supreme",
-        "module": "Profile",
-        "name": "My Profile",
+        "app": "whyte",
+        "module": "Admin",
+        "name": "User Activity",
+        "privilege": "ROLE_ADMIN_ACTIVITY",
+        "url": "/admin/activity",
+        "icon": "icon-login",
+        "orderNo": 13,
+        "hasChildren": false
+    },
+    {
+        "app": "whyte",
+        "module": "Dashboard",
+        "name": "Dashboard",
         "privilege": "ROLE_PROFILE",
-        "url": "/profile",
+        "url": "/dashboard",
         "icon": "icon-user",
         "orderNo": 1,
         "hasChildren": false,
         "onNav": true
     },
     {
-        "app": "supreme",
-        "module": "Profile",
-        "name": "My Documents",
-        "privilege": "ROLE_DOCS",
-        "url": "/docs",
+        "app": "whyte",
+        "module": "Chat",
+        "name": "Chat",
+        "privilege": "ROLE_CHAT",
+        "url": "/chat",
         "icon": "icon-docs",
         "orderNo": 2,
         "hasChildren": false,
         "onNav": true
     },
     {
-        "app": "supreme",
-        "module": "Profile",
-        "name": "Profile Settings",
-        "privilege": "ROLE_PROFILE_SETTINGS",
-        "url": "/profile-options",
+        "app": "whyte",
+        "module": "Channels",
+        "name": "Channels",
+        "privilege": "ROLE_CHANNELS",
+        "url": "/channels",
         "icon": "icon-options-vertical",
         "orderNo": 3,
         "hasChildren": false
     },
     {
-        "app": "supreme",
-        "module": "Search",
-        "name": "Search Candidates",
-        "privilege": "ROLE_SEARCH",
-        "url": "/search",
+        "app": "whyte",
+        "module": "Tasks",
+        "name": "Tasks",
+        "privilege": "ROLE_TASKS",
+        "url": "/tasks",
         "icon": "icon-magnifier",
         "orderNo": 4,
         "hasChildren": false
     },
     {
-        "app": "supreme",
-        "module": "Search",
-        "name": "Shortlists",
-        "privilege": "ROLE_SHORTLIST",
-        "url": "/shortlist",
+        "app": "whyte",
+        "module": "Calendar",
+        "name": "Calendar",
+        "privilege": "ROLE_CALENDAR",
+        "url": "/calendar",
         "icon": "icon-list",
         "orderNo": 5,
-        "hasChildren": false
-    },
-    {
-        "app": "supreme",
-        "module": "Settings",
-        "name": "API Tokens",
-        "privilege": "ROLE_API_TOKEN",
-        "url": "/tokens",
-        "icon": "icon-user",
-        "orderNo": 6,
-        "hasChildren": false
-    },
-    {
-        "app": "supreme",
-        "module": "Settings",
-        "name": "API Docs",
-        "privilege": "ROLE_API_DOCS",
-        "url": "/api-docs",
-        "icon": "icon-support",
-        "orderNo": 7,
         "hasChildren": false
     }
 ]

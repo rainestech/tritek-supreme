@@ -16,12 +16,12 @@ use Rainestech\AdminApi\Controllers\UserApiController;
 Route::get('/init', [NavController::class, 'init'])->name('nav.init');
 
 // Storage
-Route::get('/v1/fs/dl/{file}', [StorageApiController::class, 'getFile'])->name('fs.get.file');
-Route::get('/v1/fs/uid/{id}', [StorageApiController::class, 'getFs'])->name('fs.get.record');
+Route::get('/v1/fs/dl/{file}', [StorageApiController::class, 'getFile'])->name('admin.fs.get.file');
+Route::get('/v1/fs/uid/{id}', [StorageApiController::class, 'getFs'])->name('admin.fs.get.record');
 
 Route::group(['prefix' => 'users'], function () {
     Route::post('/changePwd', [UserApiController::class, 'changePassword'])->name('users.change.password');
-    Route::post('/password/reset', [UserApiController::class, 'resetPassword'])->name('users.change.password');
+    Route::post('/password/reset', [UserApiController::class, 'resetPassword'])->name('users.reset.password');
     Route::post('/recover', [UserApiController::class, 'recoverPassword'])->name('users.recover.password');
     Route::post('/verification', [UserApiController::class, 'verification'])->name('users.recover.verify');
     Route::post('/regenerate-token/{id?}', [UserApiController::class, 'regenerateToken'])->name('users.regenerate.token');
@@ -54,6 +54,7 @@ Route::group(['middleware' => 'admin.api'], function () {
     Route::get('/users/roles/privileges', [RoleApiController::class, 'privileges'])->name('admin.api.privileges');
 
     Route::group(['prefix' => 'users/roles', 'middleware' => ['admin.api', 'access:ROLE_ADMIN_ROLES']], function () {
+        Route::post('/default', [RoleApiController::class, 'defaultRole'])->name('admin.api.roles.default');
         Route::post('/save', [RoleApiController::class, 'save'])->name('admin.api.role.save');
         Route::delete('/remove/{id}', [RoleApiController::class, 'destroy'])->name('admin.api.roles.delete');
     });

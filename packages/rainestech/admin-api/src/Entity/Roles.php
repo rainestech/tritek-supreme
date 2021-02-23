@@ -40,6 +40,8 @@ class Roles extends BaseModel
     protected $casts = [
         'defaultRole' => 'boolean'
     ];
+    protected $with = [];
+
 
     public function privileges()
     {

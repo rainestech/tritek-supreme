@@ -8,26 +8,24 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Rainestech\AdminApi\Entity\Roles;
 use Rainestech\AdminApi\Entity\Tokens;
-use Rainestech\AdminApi\Entity\UserDevice;
 use Rainestech\AdminApi\Entity\Users;
 use Rainestech\AdminApi\Notifications\EmailVerification;
 use Rainestech\AdminApi\Requests\PasswordRequest;
 use Rainestech\AdminApi\Requests\UsersRequest;
 use Rainestech\AdminApi\Utils\ErrorResponse;
+use Rainestech\AdminApi\Utils\LmsLogin;
 use Rainestech\AdminApi\Utils\Login;
 use Rainestech\AdminApi\Utils\Register;
 use Rainestech\AdminApi\Utils\Security;
 
 class UserApiController extends BaseApiController {
-    use Login, Register, Security, ErrorResponse;
+    use Login, Register, Security, ErrorResponse, LmsLogin;
 
     public function index() {
         return Users::all();
     }
 
     public function login(Request $request) {
-       // dd(request()->server('HTTP_USER_AGENT'));
-
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -44,44 +42,19 @@ class UserApiController extends BaseApiController {
             }
         }
 
+        if (!$testUser = Users::where('email', $request->input('username'))->first()) {
+            if (!$testUser = Users::where('username', $request->input('username'))->first()) {
+                dd('here');
+                return $this->loginLMS($request->input('username'), $request->input('password'));
+            }
+        }
+
         if ($this->attemptLogin($request)) {
             if ($this->checkHotList(auth('api')->id())) {
                 return $this->sendFailedLoginResponse($request);
             }
-
             $user = auth('api')->user();
-
-            $token = Tokens::where('userID', $user->id)->first();
-            if (!$token) {
-                $token = new Tokens();
-            }
-
-            $token->ip = $this->getIp();
-            $token->device = $this->getDeviceDetails();
-            $token->userID = $user->id;
-            $token->token = $this->token;
-            $token->save();
-
-            $location = $this->getLocation();
-            $userDevice = UserDevice::where('userID', $user->id)
-                ->where('deviceRaw', request()->userAgent())
-                ->where('ip', $this->getIp())
-                ->first();
-
-            if (!$userDevice) {
-                $userDevice = new UserDevice();
-                $userDevice->fill($location);
-                $userDevice->userID =  $user->id;
-                $userDevice->token = $token->token;
-//                dd(auth('api')->id());
-                // @todo send mail
-            }
-
-            $userDevice->lastLogin = Carbon::now('UTC');
-            $userDevice->token = $this->token;
-            $userDevice->save();
-
-            return $this->sendLoginResponse($request, $this->token);
+            return $this->prepareLoginResponse($user);
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
