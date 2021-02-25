@@ -53,6 +53,13 @@ trait Register {
     public function registerVerify(RegistrationRequest $request)
     {
         event(new Registered($user = $this->create($request->all(), false)));
+
+        $role = Roles::where('defaultRole', true)->first();
+
+        if ($role) {
+            $user->roles()->attach($role->id);
+        }
+
         $notification = new EmailVerification();
         $notification->sendVerification($user);
 

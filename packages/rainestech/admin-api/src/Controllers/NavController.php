@@ -27,7 +27,7 @@ class NavController extends BaseApiController {
             $nav->add($this->mainDropdown($m, $privileges->sortBy('orderNo')->unique('id')->values()->all()));
         }
 
-        return $nav->values()->all();
+        return $nav->unique('name')->values()->all();
     }
 
     private function mainDropdown($module, $privileges) {

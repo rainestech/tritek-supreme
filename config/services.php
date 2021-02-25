@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    '37signals' => [
+        'client_id' => env('THIRTYSEVENSIGNALS_CLIENT_ID'),
+        'client_secret' => env('THIRTYSEVENSIGNALS_CLIENT_SECRET'),
+        'redirect' => env('THIRTYSEVENSIGNALS_REDIRECT_URI')
+    ],
 ];

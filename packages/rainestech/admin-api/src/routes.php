@@ -18,7 +18,6 @@ Route::get('/init', [NavController::class, 'init'])->name('nav.init');
 // Storage
 Route::get('/v1/fs/dl/{file}', [StorageApiController::class, 'getFile'])->name('admin.fs.get.file');
 Route::get('/v1/fs/uid/{id}', [StorageApiController::class, 'getFs'])->name('admin.fs.get.record');
-Route::post('/v1/fs', [StorageApiController::class, 'save'])->name('fs.save');
 
 Route::group(['prefix' => 'users'], function () {
     Route::post('/changePwd', [UserApiController::class, 'changePassword'])->name('users.change.password');
@@ -40,6 +39,7 @@ Route::group(['middleware' => 'admin.api'], function () {
     Route::post('/users/renew', [UserApiController::class, 'renew'])->name('users.token.renew');
 
     // Storage
+    Route::post('/v1/fs', [StorageApiController::class, 'save'])->name('fs.save');
     Route::put('/v1/fs', [StorageApiController::class, 'edit'])->name('fs.edit');
     Route::delete('/v1/fs/rem/{id}', [StorageApiController::class, 'delete'])->name('fs.delete');
 
@@ -54,7 +54,6 @@ Route::group(['middleware' => 'admin.api'], function () {
     Route::get('/users/roles/privileges', [RoleApiController::class, 'privileges'])->name('admin.api.privileges');
 
     Route::group(['prefix' => 'users/roles', 'middleware' => ['admin.api', 'access:ROLE_ADMIN_ROLES']], function () {
-        Route::post('/default', [RoleApiController::class, 'defaultRole'])->name('admin.api.roles.default');
         Route::post('/save', [RoleApiController::class, 'save'])->name('admin.api.role.save');
         Route::delete('/remove/{id}', [RoleApiController::class, 'destroy'])->name('admin.api.roles.delete');
     });

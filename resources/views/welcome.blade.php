@@ -1,16 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Whyte</title>
     <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="/styles.9d2543254585a573377a.css"></head>
-<body>
-<app-root></app-root>
-<script src="/runtime.fd5d5c0590a79ed1fe06.js" defer></script>
-<script src="/polyfills-es5.bf7104eed996017919b1.js" nomodule defer></script>
-<script src="/polyfills.f95c134a1e4f612c0fb5.js" defer></script>
-<script src="/main.b809fe786e2ec7167224.js" defer></script></body>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="Project Supreme" name="description">
+    <meta content="Adekola Ayoola" name="author">
+    <meta content="Adekola Ayoola<adadekola@gmail.com>" name="developer">
+    <meta content="Tritek,Nigeria,Enterprise,Application,Laravel,Php,Admin,Webapp,Java,Angular,Dashboard,Typescript" name="keyword">
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+    <link href="/assets/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+    <link href="/assets/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="/assets/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="/assets/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="/assets/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="/assets/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="/assets/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+    <link href="/assets/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="/assets/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+    <link href="/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="/assets/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+    <link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+    <link href="/assets/manifest.json" rel="manifest">
+    <meta content="#ffffff" name="msapplication-TileColor">
+    <meta content="/assets/ms-icon-144x144.png" name="msapplication-TileImage">
+    <meta content="#ffffff" name="theme-color">
+    <title>Project Supreme</title>
+    <link rel="stylesheet" href="/styles.01268248182729ec0692.css"></head>
+<body class="app">
+<!-- App Loading... -->
+<script src="/runtime.838adf182032045db139.js" defer></script>
+<script src="/polyfills-es5.828bd9f0e1e67ac20298.js" nomodule defer></script>
+<script src="/polyfills.6b0ceadccbb14dfb7cb8.js" defer></script>
+<script src="/main.5f297fe2a88a186abc78.js" defer></script>
+</body>
 </html>
