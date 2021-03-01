@@ -14,6 +14,7 @@ use Rainestech\AdminApi\Entity\Users;
 use Rainestech\AdminApi\Notifications\EmailVerification;
 use Rainestech\AdminApi\Requests\RegistrationRequest;
 use Rainestech\AdminApi\Requests\UsersRequest;
+use Rainestech\Personnel\Entity\Recruiters;
 
 trait Register {
 
@@ -47,18 +48,18 @@ trait Register {
     /**
      * Handle a registration request for quest registration
      *
-     * @param UsersRequest $request
+     * @param RegistrationRequest $request
      * @return JsonResponse|Response
      */
     public function registerVerify(RegistrationRequest $request)
     {
         event(new Registered($user = $this->create($request->all(), false)));
 
-        $role = Roles::where('defaultRole', true)->first();
-
-        if ($role) {
-            $user->roles()->attach($role->id);
-        }
+//        $role = Roles::where('defaultRole', true)->first();
+//
+//        if ($role) {
+//            $user->roles()->attach($role->id);
+//        }
 
         $notification = new EmailVerification();
         $notification->sendVerification($user);
@@ -66,6 +67,14 @@ trait Register {
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
+
+        $recruiters = new Recruiters($request->except(['logo', 'username', 'password']));
+        $recruiters->userId = $request->input('user.id');
+        $recruiters->fsId = $request->input('logo.id');
+        $recruiters->save();
+
+        $user->passportID = $request->input('logo.id');
+        $user->update();
 
         return new Response('', 201);
     }

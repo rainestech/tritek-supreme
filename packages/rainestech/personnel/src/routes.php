@@ -15,3 +15,7 @@ Route::group(['middleware' => 'admin.api', 'prefix' => 'profile'], function () {
     Route::delete('/recruiter/remove/{id}', [ProfileController::class, 'removeRecruiter'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('recruiter.delete');
     Route::delete('/candidate/remove/{id}', [ProfileController::class, 'removeCandidate'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('candidate.delete');
 });
+
+Route::group(['middleware' => 'admin.api'], function () {
+    Route::delete('/rup', [ProfileController::class, 'deleteProfile'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('profile.delete');
+});

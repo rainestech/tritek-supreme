@@ -21,7 +21,7 @@ class FormValidationErrors extends Exception {
         // return a json with desired format
         $str = "";
         foreach ($this->validator->errors()->getMessages() as $k => $e) {
-            $str .= $k . ": " . $e[0] . " ";
+            $str .= strtoupper($k) . ": " . $e[0] . " \n";
         }
         return response()->json(["status" => 422,
             "error" => "Input Validation Error",

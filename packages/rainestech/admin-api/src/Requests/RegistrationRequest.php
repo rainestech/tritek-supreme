@@ -31,7 +31,13 @@ class RegistrationRequest extends FormRequest
                     'email' => 'required|email|unique:admin_users,email,' . $id,
                     'username' => 'required|string|between:3,50|unique:admin_users,username,' . $id,
                     'password' => 'required|string|confirmed|between:6,100',
-                    'companyName' => 'required|string|between:10,200'
+                    'companyName' => 'required|string|between:10,200',
+                    'description'  => 'required|between:3,250|string',
+                    'website'  => 'nullable|between:3,100|string',
+                    'industry'  => 'required|between:3,200|string',
+                    'type'  => 'string|required|between:2,100',
+                    'size'  => 'string|required|between:2,100',
+                    'logo.id'  => 'integer|required|exists:file_storage,id',
                 ];
             }
 

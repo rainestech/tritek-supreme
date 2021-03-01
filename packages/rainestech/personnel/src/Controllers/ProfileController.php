@@ -123,7 +123,27 @@ class ProfileController extends BaseApiController {
         return response()->json([]);
     }
 
+    public function deleteProfile() {
+        $user = auth('api')->user();
+        $recruiter = Recruiters::where('userId', $user->id)->first();
+        $candidate = Candidates::where('userId', $user->id)->first();
+
+        if ($recruiter) {
+            $recruiter->user()->delete();
+            $recruiter->delete();
+        }
+
+        if ($candidate) {
+            $candidate->user()->delete();
+            $candidate->delete();
+        }
+
+        return response()->json([]);
+    }
+
     public function removeCandidate($id) {
 
     }
+
+
 }

@@ -2,49 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb6c9f5e-fe49-4ea7-9d49-f2662c6ef000" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BasecampController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/basecamp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/1.db1f86ec2f3aa18106f7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/10.1d44bbe301420ec95bdc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/11.b2b9f558dbef738c2ddd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/12.f2aa0521951536a6c5d7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/13.0700754b6ead5b83a032.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/14.f276d981e8471ec6b7e6.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/15.deebb23ed5b062f83086.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/3.841b1129ed4cb8756866.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/8.fbcf58e4e89345eda87b.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/9.558538105a259677310e.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common.2acd08b77bf4022450d4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main.5f297fe2a88a186abc78.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/polyfills-es5.828bd9f0e1e67ac20298.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/polyfills.6b0ceadccbb14dfb7cb8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/primeicons.3a0d4a58da62cf7c55bb.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/primeicons.c55d94a248721abbd220.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/primeicons.dfbfef2de4bfb34e9722.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/primeicons.e61f3495a7ecd3d571a4.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/runtime.838adf182032045db139.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/styles.01268248182729ec0692.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/supreme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/supreme.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers/NavController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers/NavController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers/StorageApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers/StorageApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BasecampController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BasecampController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Errors/FormValidationErrors.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Errors/FormValidationErrors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RegistrationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/UsersRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/UsersRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/Register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/RecruiterRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/RecruiterRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/3rdpartylicenses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/1.cbcdb059b6d71250d10d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/1.db1f86ec2f3aa18106f7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/10.1d44bbe301420ec95bdc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/10.eb357c524434446354d0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/11.5ce1b98274c7f395d32a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/11.b2b9f558dbef738c2ddd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/12.c8e9e3001d4f481ee010.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/12.f2aa0521951536a6c5d7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/13.0700754b6ead5b83a032.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/13.46421cf634f9dbf13db4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/14.2ad89c1c37df30d80445.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/14.f276d981e8471ec6b7e6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/15.9f578c68897d36fdf469.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/15.deebb23ed5b062f83086.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/3.841b1129ed4cb8756866.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/6.ba5a25679b835cde3af4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/7.adbed119a8e90f90c9b5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/8.18ca6088b4d1669703bc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/9.2970f8ceca386ef6c4e7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/common.2acd08b77bf4022450d4.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.13f70f0183edb782e753.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.5f297fe2a88a186abc78.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/polyfills-es5.828bd9f0e1e67ac20298.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/polyfills-es5.b85f1ddad92fbfdc0782.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/polyfills.6b0ceadccbb14dfb7cb8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/polyfills.ca487da08f4451d33229.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/runtime.228c90487519554ac448.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/runtime.838adf182032045db139.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/styles.2b709da1bbd9f4092e5b.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tritek--access_log" beforeDir="false" afterPath="$PROJECT_DIR$/tritek--access_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tritek-api/tritek--access_log" beforeDir="false" afterPath="$PROJECT_DIR$/../tritek-api/tritek--access_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +269,9 @@
       <workItem from="1613402827704" duration="21240000" />
       <workItem from="1613754164245" duration="299000" />
       <workItem from="1614162095082" duration="5288000" />
-      <workItem from="1614256609529" duration="6508000" />
+      <workItem from="1614256609529" duration="7003000" />
+      <workItem from="1614270351463" duration="12000" />
+      <workItem from="1614595948852" duration="4755000" />
     </task>
     <task id="LOCAL-00001" summary="bug fixes">
       <created>1613605483482</created>
@@ -279,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613605483482</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="basecamp integration">
+      <created>1614269339555</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614269339555</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +296,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+    <MESSAGE value="basecamp integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="basecamp integration" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="23" key="#PHP" timestamp="1612953063421">
@@ -307,10 +316,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="378" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.777@0.23.1280.777" timestamp="1613592795197" />
-    <state x="223" y="23" key="CommitChangelistDialog2" timestamp="1613605482197">
+    <state x="223" y="23" key="CommitChangelistDialog2" timestamp="1614269338082">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="223" y="23" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1613605482197" />
+    <state x="223" y="23" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1614269338082" />
     <state width="1238" height="197" key="GridCell.Tab.0.bottom" timestamp="1612953122808">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -327,14 +336,18 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="1238" height="197" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1612953122808" />
+    <state x="351" y="134" key="MultipleFileMergeDialog" timestamp="1614270286239">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="351" y="134" key="MultipleFileMergeDialog/0.23.1280.777@0.23.1280.777" timestamp="1614270286239" />
     <state x="277" y="235" key="NewPhpClassDialog" timestamp="1614258250758">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="277" y="235" key="NewPhpClassDialog/0.23.1280.777@0.23.1280.777" timestamp="1614258250758" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1613605486217">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1614270189597">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1613605486217" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1614270189597" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1614263214317">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

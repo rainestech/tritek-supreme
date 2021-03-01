@@ -31,9 +31,5 @@
     <link rel="stylesheet" href="/styles.01268248182729ec0692.css"></head>
 <body class="app">
 <!-- App Loading... -->
-<script src="/runtime.838adf182032045db139.js" defer></script>
-<script src="/polyfills-es5.828bd9f0e1e67ac20298.js" nomodule defer></script>
-<script src="/polyfills.6b0ceadccbb14dfb7cb8.js" defer></script>
-<script src="/main.5f297fe2a88a186abc78.js" defer></script>
-</body>
+<script src="/runtime.65fa4d01a5021999fe38.js" defer></script><script src="/polyfills-es5.8b8b5847ed575ffd8030.js" nomodule defer></script><script src="/polyfills.002d124bd7f9124a76fc.js" defer></script><script src="/main.38b49c464ff405025a4c.js" defer></script></body>
 </html>

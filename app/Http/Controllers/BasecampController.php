@@ -72,7 +72,6 @@ class BasecampController extends Controller
         ]);
 
         $project = BasecampFacade::projects()->index()->get(10);
-        Document::class;
 
         clock($project->vault()->documents()->index());
 

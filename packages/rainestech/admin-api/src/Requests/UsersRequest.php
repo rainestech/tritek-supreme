@@ -31,7 +31,7 @@ class UsersRequest extends FormRequest
                     'username'  => 'required|string|between:3,50|unique:admin_users,username,'.$id,
                     'password'  => 'nullable|string|between:6,100',
                     'oldPassword'  => 'nullable|string|between:6,100',
-                    'role.*.id'  => 'integer|exists:admin_roles,id',
+                    'role'  => 'integer|exists:admin_roles,role',
                     'status'  => 'boolean',
                 ];
             }
