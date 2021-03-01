@@ -38,6 +38,7 @@ trait LmsLogin
             $user->email_verified_at = Carbon::now();
 
             $user->save();
+            $this->token = auth('api')->login($user);
             if($role = Roles::where('defaultRole', true)->first()) {
                 $user->roles()->attach($role->id);
             }

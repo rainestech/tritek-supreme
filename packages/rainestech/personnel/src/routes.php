@@ -1,5 +1,6 @@
 <?php
 
+use Rainestech\Personnel\Controllers\ChatController;
 use Rainestech\Personnel\Controllers\ProfileController;
 
 Route::group(['middleware' => 'admin.api', 'prefix' => 'profile'], function () {
@@ -14,4 +15,10 @@ Route::group(['middleware' => 'admin.api', 'prefix' => 'profile'], function () {
     Route::put('/candidates', [ProfileController::class, 'updateCandidate'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_CANDIDATES')->name('candidate.update');
     Route::delete('/recruiters/remove/{id}', [ProfileController::class, 'removeRecruiter'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('recruiter.remove');
     Route::delete('/candidates/remove/{id}', [ProfileController::class, 'removeCandidate'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_CANDIDATES')->name('candidate.remove');
+});
+
+Route::group(['middleware' => 'admin.api', 'prefix' => 'chats'], function () {
+    Route::get('/friends', [ChatController::class, 'friends'])->middleware('access:ROLE_CHAT')->name('chats.friends');
+    Route::get('/contacts', [ChatController::class, 'contacts'])->middleware('access:ROLE_CHAT')->name('chats.contacts');
+    Route::post('/friends', [ChatController::class, 'saveFriends'])->middleware('access:ROLE_CHAT')->name('chats.friends.save');
 });

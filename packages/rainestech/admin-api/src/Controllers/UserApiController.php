@@ -44,7 +44,6 @@ class UserApiController extends BaseApiController {
 
         if (!$testUser = Users::where('email', $request->input('username'))->first()) {
             if (!$testUser = Users::where('username', $request->input('username'))->first()) {
-                dd('here');
                 return $this->loginLMS($request->input('username'), $request->input('password'));
             }
         }
