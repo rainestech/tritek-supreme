@@ -10,11 +10,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Rainestech\AdminApi\Utils\ErrorResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class BaseApiController extends BaseController{
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ErrorResponse;
 
     public function errorResponse(Throwable $e) {
         $statusCode = $this->isHttpException($e) ? $e->getStatusCode() : 500;

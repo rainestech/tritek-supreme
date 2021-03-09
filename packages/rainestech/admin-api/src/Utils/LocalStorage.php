@@ -5,6 +5,7 @@ namespace Rainestech\AdminApi\Utils;
 
 
 use Illuminate\Support\Facades\Storage;
+use Rainestech\AdminApi\Entity\FileStorage;
 use Rainestech\AdminApi\Entity\FileStorage as FsStorage;
 use Rainestech\AdminApi\Requests\StorageRequest;
 
@@ -63,6 +64,11 @@ trait LocalStorage {
     private function deleteFile($tag, $name) {
         $path = $tag . DIRECTORY_SEPARATOR . $name;
         Storage::disk('app')->delete($path);
+    }
+
+    public function removeFile(FileStorage $fileStorage) {
+        $this->deleteFile($fileStorage->tag, $fileStorage->name);
+        $fileStorage->delete();
     }
 
     public function editFile(StorageRequest $request) {

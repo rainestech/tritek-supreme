@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 /**
  * Rainestech\AdminApi\Entity\BaseModel
@@ -80,13 +81,13 @@ class BaseModel extends Model
 //     */
 //    public function getAttribute($key)
 //    {
-//        if (array_key_exists($key, $this->relations)) {
+//        if (array_key_exists($key, $this->relations) || method_exists($this, $key)) {
 //            return parent::getAttribute($key);
 //        } else {
 //            return parent::getAttribute(Str::snake($key));
 //        }
 //    }
-//
+
 //    /**
 //     * Set a given attribute on the model.
 //     *

@@ -73,6 +73,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereDeletedOn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereLastPwd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereLastPwdChange($value)
+ * @property-read mixed $role
  */
 class Users extends Authenticatable implements JWTSubject
 {

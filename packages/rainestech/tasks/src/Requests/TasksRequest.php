@@ -1,12 +1,15 @@
 <?php
 
-namespace Rainestech\Personnel\Requests;
+
+namespace Rainestech\Tasks\Requests;
+
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Rainestech\AdminApi\Errors\FormValidationErrors;
 
-class RecruiterRequest extends FormRequest {
+class TasksRequest extends FormRequest
+{
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,17 +27,17 @@ class RecruiterRequest extends FormRequest {
             case 'PATCH':
             case 'POST': {
                 return [
-                    'id'  => 'integer|exists:members_personnel,id',
-                    'companyName'  => 'required|between:3,250|string',
-                    'description'  => 'required|between:3,250|string',
-                    'email'  => 'required|email',
-                    'website'  => 'nullable|between:3,100|string',
-                    'industry'  => 'required|between:3,200|string',
-                    'address'  => 'required|between:3,200|string',
-                    'city'  => 'string|required|between:2,100',
-                    'country'  => 'string|required|between:2,100',
-                    'logo.id'  => 'integer|required|exists:file_storage,id',
-                    'user.id'  => 'integer|required|exists:admin_users,id',
+                    'id'  => 'integer|exists:tasks_tasks,id',
+                    'name'  => 'required|between:3,250|string',
+                    'taskNo'  => 'required|between:3,25|string',
+                    'tab'  => 'required|between:3,25|string',
+                    'description'  => 'required|string',
+                    'assignedTo.*.id'  => 'integer|exists:admin_users,id',
+                    'channel.id'  => 'required|integer|exists:profiles_channels,id',
+                    'parent.id'  => 'integer|exists:tasks_tasks,id',
+                    'docs.*.id'  => 'integer|exists:file_storage,id',
+                    'dueDate'  => 'date|required',
+                    'doneDate'  => 'nullable|date',
                 ];
             }
 
