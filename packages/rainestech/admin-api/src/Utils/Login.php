@@ -3,8 +3,6 @@
 namespace Rainestech\AdminApi\Utils;
 
 use Illuminate\Http\Request;
-use ReallySimpleJWT\Exception\ValidateException;
-use ReallySimpleJWT\Token;
 
 trait Login
 {
@@ -14,19 +12,21 @@ trait Login
     protected $user;
 
     private function generateToken($user) {
-        $payload = [
-            'iat' => time(),
-            'uid' => $user->id,
-            'exp' => null,
-            'iss' => 'myTritek',
-            'sub' => $user->email
-        ];
-
-        try {
-            return Token::customPayload($payload, env('JWT_SECRET'));
-        } catch (ValidateException $e) {
-            return $this->jsonError(500, $e->getMessage());
-        }
+//        $payload = [
+//            'iat' => time(),
+//            'uid' => $user->id,
+//            'exp' => null,
+//            'iss' => 'myTritek',
+//            'sub' => $user->email
+//        ];
+//
+//        try {
+//            clock(env('JWT_SECRET'));
+//            return Token::customPayload($payload, env('JWT_SECRET'));
+//        } catch (ValidateException $e) {
+//            return $this->jsonError(500, $e->getMessage());
+//        }
+        return auth('api')->refresh(true, true);
     }
 
 //    protected function attemptLogin(Request $request) {

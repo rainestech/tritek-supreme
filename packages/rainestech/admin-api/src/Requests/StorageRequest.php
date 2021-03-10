@@ -15,7 +15,6 @@ class StorageRequest extends FormRequest {
      * @return array
      */
     public function rules() {
-        $id = $this->request->get('id');
 
         switch($this->method()) {
             case 'GET':
@@ -25,9 +24,9 @@ class StorageRequest extends FormRequest {
             case 'POST': {
                 return [
                     'id'    => 'integer|exists:file_storage,id',
-                    'name'  => 'required|between:3,100|string',
+                    'name'  => 'required|between:3,250|string',
                     'tag'  => 'required|string|between:3,100',
-                    'file'  => 'required|max:5120',
+                    'file'  => 'required',
                 ];
             }
             case 'PUT':
@@ -36,7 +35,7 @@ class StorageRequest extends FormRequest {
                     'id'    => 'integer|required|exists:admin_fs_storage,id',
                     'name'  => 'required|between:3,100|string',
                     'tag'  => 'required|string|between:3,100',
-                    'file'  => 'required|max:5120',          ];
+                    'file'  => 'required',          ];
             }
             default:{
                 return [];

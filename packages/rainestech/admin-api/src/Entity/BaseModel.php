@@ -40,7 +40,10 @@ class BaseModel extends Model
                 $model->setAttribute('month', Carbon::parse($model->txDate)->monthName);
                 $model->setAttribute('year', Carbon::parse($model->txDate)->year);
             }
-            $model->setAttribute('editor', Auth::id());
+
+            if ($model->hasAttribute('editor')) {
+                $model->setAttribute('editor', Auth::id());
+            }
         });
 
         self::saving(function ($model) {
@@ -48,7 +51,9 @@ class BaseModel extends Model
                 $model->setAttribute('month', Carbon::parse($model->txDate)->monthName);
                 $model->setAttribute('year', Carbon::parse($model->txDate)->year);
             }
-            $model->setAttribute('editor', Auth::id());
+            if ($model->hasAttribute('editor')) {
+                $model->setAttribute('editor', Auth::id());
+            }
         });
 
         self::updating(function ($model) {
@@ -56,7 +61,9 @@ class BaseModel extends Model
                 $model->setAttribute('month', Carbon::parse($model->txDate)->monthName);
                 $model->setAttribute('year', Carbon::parse($model->txDate)->year);
             }
-            $model->setAttribute('editor', Auth::id());
+            if ($model->hasAttribute('editor')) {
+                $model->setAttribute('editor', Auth::id());
+            }
         });
     }
 

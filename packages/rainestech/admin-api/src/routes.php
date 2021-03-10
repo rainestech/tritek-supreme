@@ -7,6 +7,7 @@
 |
 */
 
+use Rainestech\AdminApi\Controllers\DocumentApiController;
 use Rainestech\AdminApi\Controllers\NavController;
 use Rainestech\AdminApi\Controllers\NotificationTemplateController;
 use Rainestech\AdminApi\Controllers\RoleApiController;
@@ -19,6 +20,7 @@ Route::get('/init', [NavController::class, 'init'])->name('nav.init');
 Route::get('/v1/fs/dl/{file}', [StorageApiController::class, 'getFile'])->name('admin.fs.get.file');
 Route::get('/v1/fs/uid/{id}', [StorageApiController::class, 'getFs'])->name('admin.fs.get.record');
 Route::post('/v1/fs', [StorageApiController::class, 'save'])->name('fs.save');
+Route::get('/v1/docs/dl/{file}', [DocumentApiController::class, 'getFile'])->name('documents.get.file.public');
 
 Route::group(['prefix' => 'users'], function () {
     Route::post('/changePwd', [UserApiController::class, 'changePassword'])->name('users.change.password');
@@ -71,6 +73,18 @@ Route::group(['middleware' => 'admin.api'], function () {
         Route::put('/sms', [NotificationTemplateController::class, 'editSmsTemplate'])->name('notifications.sms.edit');
         Route::delete('/sms/rem/{id}', [NotificationTemplateController::class, 'deleteSmsTemp'])->name('notifications.sms.delete');
         Route::delete('/mail/rem/{id}', [NotificationTemplateController::class, 'deleteMailTemp'])->name('notifications.mail.delete');
+    });
+
+    // Documents
+    Route::group(['prefix' => 'v1/docs', 'middleware' => 'access:ROLE_DOCS'], function () {
+//        Route::get('/dl/{file}', [DocumentApiController::class, 'getFile'])->name('documents.get.file');
+        Route::post('/file', [DocumentApiController::class, 'save'])->name('doc.save.file');
+        Route::put('/file', [DocumentApiController::class, 'edit'])->name('doc.edit.file');
+        Route::get('/', [DocumentApiController::class, 'getMyDocuments'])->name('documents.get');
+        Route::get('/uid/{id}', [DocumentApiController::class, 'getUserDocuments'])->name('documents.user.get');
+        Route::post('/', [DocumentApiController::class, 'saveDoc'])->name('doc.save');
+        Route::put('/', [DocumentApiController::class, 'editDoc'])->name('doc.edit');
+        Route::delete('/remove/{id}', [DocumentApiController::class, 'deleteDocument'])->name('doc.delete');
     });
 
 });

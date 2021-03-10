@@ -22,3 +22,4 @@ Route::get('/basecamp', [\App\Http\Controllers\BasecampController::class, 'callb
 Route::get('/basecamp/projects', [\App\Http\Controllers\BasecampController::class, 'projects'])->name('basecamp.projects');
 Route::get('/basecamp/people', [\App\Http\Controllers\BasecampController::class, 'people'])->name('basecamp.people');
 Route::get('/basecamp/docs', [\App\Http\Controllers\BasecampController::class, 'docs'])->name('basecamp.docs');
+Route::get('/basecamp/run', [\App\Http\Controllers\BasecampController::class, 'runJobs'])->name('basecamp.job');
