@@ -13,10 +13,6 @@ use Str;
 class MigrateCandidateData
 {
     protected $config;
-    protected $nextPage;
-    protected $nextPage1;
-    protected $nextPage2;
-    protected $nextPage3;
 
     public function __construct(Array $config)
     {
@@ -31,11 +27,14 @@ class MigrateCandidateData
             'refresh_token' => $this->config['refresh_token'],
         ]);
 
+        $sample = Candidates::orderBy('bcPage', 'desc')->first();
+        clock($sample);
+
+        $k = $sample ? $sample->bcPage + 1 : 1;
+
         $people = BasecampFacade::people();
 
-        $this->nextPage = 1;
-
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = $k; $i < 1000; $i++) {
             $page = $people->index($i);
             if ($page->count() < 1) {
                 break;
@@ -52,6 +51,7 @@ class MigrateCandidateData
                 $cand->avatar = $person->avatar_url;
                 $cand->description = $person->bio;
                 $cand->bcId = $person->id;
+                $cand->bcPage = $i;
 
                 $cand->save();
                 sleep(1);
@@ -71,33 +71,13 @@ class MigrateCandidateData
 
         $projects = BasecampFacade::projects();
 
-        $this->nextPage = 1;
+        for ($i = 1; $i < 1000; $i++) {
+            $page = $projects->index($i);
+            if ($page->count() < 1) {
+                break;
+            }
 
-//        foreach ($projects->index() as $project) {
-//            if (!$proj = Projects::where('bcId', $project->id)->first()) {
-//                $proj = new Projects();
-//            }
-//
-//            $proj->bcId = $project->id;
-//            $proj->status = $project->status;
-//            $proj->name = $project->name;
-//            $proj->description = $project->description;
-//            $proj->startDate = Carbon::parse($project->created_at);
-//
-//            if (Str::contains(strtolower($proj->name), 'completed')) {
-//                $proj->status = "completed";
-//                $proj->completedDate =  Carbon::parse($project->updated_at);
-//            }
-//
-//            if (Str::contains(strtolower($proj->name), 'halted')) {
-//                $proj->status = "halted";
-//            }
-//
-//            $proj->save();
-//        }
-
-        while($this->nextPage) {
-            foreach ($projects->index($this->nextPage) as $project) {
+            foreach ($page as $project) {
                 if (!$proj = Projects::where('bcId', $project->id)->first()) {
                     $proj = new Projects();
                 }
@@ -107,6 +87,7 @@ class MigrateCandidateData
                 $proj->name = $project->name;
                 $proj->description = $project->description;
                 $proj->startDate = Carbon::parse($project->created_at);
+                $proj->bcPage = $i;
 
                 if (Str::contains(strtolower($proj->name), 'completed')) {
                     $proj->status = "completed";
@@ -121,8 +102,8 @@ class MigrateCandidateData
 
                 sleep(1);
             }
-            $this->nextPage = $projects->index($this->nextPage)->nextPage();
         }
+
         return $this;
     }
 
@@ -135,11 +116,15 @@ class MigrateCandidateData
         ]);
 
         Projects::chunk(100, function($records){
-            foreach($records as $record) {
-                $this->nextPage1 = 1;
 
-                while ($this->nextPage1) {
-                    foreach (BasecampFacade::campfires($record->bcId)->index($this->nextPage1) as $campfire) {
+            foreach($records as $record) {
+
+                for ($i = 0; $i < 1000; $i++) {
+                    $page = BasecampFacade::campfires($record->bcId)->index($i);
+                    if ($page->count() < 1) {
+                        break;
+                    }
+                    foreach ($page as $campfire) {
                         if (!CandidatesProjects::where('bccId', $campfire->creator->id)->exists()) {
                             $candidate = Candidates::where('bcId', $campfire->creator->id)->first();
 
@@ -154,7 +139,6 @@ class MigrateCandidateData
                             }
                         }
                     }
-                    $this->nextPage1 = BasecampFacade::campfires($record->bcId)->index($this->nextPage1)->nextPage();
                 }
             }
         });
