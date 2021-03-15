@@ -56,6 +56,7 @@ Route::group(['middleware' => 'admin.api'], function () {
     Route::get('/users/roles/privileges', [RoleApiController::class, 'privileges'])->name('admin.api.privileges');
 
     Route::group(['prefix' => 'users/roles', 'middleware' => ['admin.api', 'access:ROLE_ADMIN_ROLES']], function () {
+        Route::post('/default', [RoleApiController::class, 'defaultRole'])->name('admin.api.roles.default');
         Route::post('/save', [RoleApiController::class, 'save'])->name('admin.api.role.save');
         Route::delete('/remove/{id}', [RoleApiController::class, 'destroy'])->name('admin.api.roles.delete');
     });

@@ -13,6 +13,10 @@ use Str;
 class MigrateCandidateData
 {
     protected $config;
+    protected $nextPage;
+    protected $nextPage1;
+    protected $nextPage2;
+    protected $nextPage3;
 
     public function __construct(Array $config)
     {
@@ -30,7 +34,8 @@ class MigrateCandidateData
         $sample = Candidates::orderBy('bcPage', 'desc')->first();
         clock($sample);
 
-        $k = $sample ? $sample->bcPage + 1 : 1;
+        $k = $sample ? $sample->bcPage : 1;
+        echo($k);
 
         $people = BasecampFacade::people();
 
@@ -71,7 +76,7 @@ class MigrateCandidateData
 
         $projects = BasecampFacade::projects();
 
-        for ($i = 1; $i < 1000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $page = $projects->index($i);
             if ($page->count() < 1) {
                 break;
@@ -115,27 +120,42 @@ class MigrateCandidateData
             'refresh_token' => $this->config['refresh_token'],
         ]);
 
-        Projects::chunk(100, function($records){
+        $temp = CandidatesProjects::orderBy('pId', 'desc')->first();
+        $tart = 1;
+        if ($temp) {
+            $tart = $temp->pId;
+        }
+
+        Projects::where('id', '>', $tart)->chunk(100, function($records) {
 
             foreach($records as $record) {
 
-                for ($i = 0; $i < 1000; $i++) {
+                for ($i = 1; $i < 10; $i++) {
                     $page = BasecampFacade::campfires($record->bcId)->index($i);
                     if ($page->count() < 1) {
                         break;
                     }
                     foreach ($page as $campfire) {
-                        if (!CandidatesProjects::where('bccId', $campfire->creator->id)->exists()) {
-                            $candidate = Candidates::where('bcId', $campfire->creator->id)->first();
 
-                            if ($candidate) {
-                                $candPro = new CandidatesProjects();
-                                $candPro->pId = $record->id;
-                                $candPro->cId = $candidate->id;
-                                $candPro->bccId = $campfire->creator->id;
-                                $candPro->bcpId = $record->bcId;
+                        for ($l = 1; $l < 4; $l++) {
+                            $lines = $campfire->lines($l);
 
-                                $candPro->save();
+                            foreach($lines as $line) {
+                                if (!CandidatesProjects::where('bccId', $line->creator->id)
+                                    ->where('bcpId', $record->bcId)
+                                    ->exists()) {
+                                    $candidate = Candidates::where('bcId', $line->creator->id)->first();
+
+                                    if ($candidate) {
+                                        $candPro = new CandidatesProjects();
+                                        $candPro->pId = $record->id;
+                                        $candPro->cId = $candidate->id;
+                                        $candPro->bccId = $line->creator->id;
+                                        $candPro->bcpId = $record->bcId;
+
+                                        $candPro->save();
+                                    }
+                                }
                             }
                         }
                     }

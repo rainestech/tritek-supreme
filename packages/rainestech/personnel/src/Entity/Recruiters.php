@@ -3,6 +3,7 @@
 namespace Rainestech\Personnel\Entity;
 
 use Rainestech\AdminApi\Entity\BaseModel;
+use Rainestech\AdminApi\Entity\Documents;
 use Rainestech\AdminApi\Entity\FileStorage;
 use Rainestech\AdminApi\Entity\Users;
 
@@ -82,12 +83,12 @@ class Recruiters extends BaseModel
 
     public function docs()
     {
-        return $this->belongsToMany(FileStorage::class, 'profiles_recruiters_files', 'fId', 'rId');
+        return $this->belongsToMany(Documents::class, 'profiles_recruiters_files', 'fId', 'rId');
     }
 
     public function candidates()
     {
-        return $this->belongsToMany(FileStorage::class, 'profiles_recruiters_candidates', 'cId', 'rId');
+        return $this->belongsToMany(Candidates::class, 'profiles_recruiters_candidates', 'cId', 'rId');
     }
 
     public function logo()

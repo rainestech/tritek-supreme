@@ -10,6 +10,7 @@ use Rainestech\AdminApi\Entity\Roles;
 use Rainestech\AdminApi\Entity\Tokens;
 use Rainestech\AdminApi\Entity\UserDevice;
 use Rainestech\AdminApi\Entity\Users;
+use Rainestech\Personnel\Entity\Candidates;
 
 trait LmsLogin
 {
@@ -34,12 +35,15 @@ trait LmsLogin
             $user->firstName = $resp['firstName'];
             $user->lastName = $resp['lastName'];
             $user->email = $resp['email'];
+            $user->adminVerified = $resp['status'] == 'active';
             $user->password = Hash::make($password);
             $user->email_verified_at = Carbon::now();
 
             $user->save();
+            $this->linkCandidateProfile($user);
+
             $this->token = auth('api')->login($user);
-            if($role = Roles::where('defaultRole', true)->first()) {
+            if($role = Roles::find(3)) {
                 $user->roles()->attach($role->id);
             }
 
@@ -47,6 +51,16 @@ trait LmsLogin
         }
 
         return $this->sendFailedLoginResponse(request());
+    }
+
+    private function linkCandidateProfile(Users $user) {
+        if ($candidate = Candidates::where("email", $user->email)->orderBy('id', 'desc')->first()) {
+            $candidate->userId = $user->id;
+            $candidate->update();
+
+            $user->avatar = $candidate->avatar;
+            $user->save();
+        }
     }
 
     protected function ping() {

@@ -5,15 +5,21 @@ namespace Rainestech\Personnel\Controllers;
 use Rainestech\AdminApi\Controllers\BaseApiController;
 use Rainestech\AdminApi\Entity\Users;
 use Rainestech\AdminApi\Utils\ErrorResponse;
+use Rainestech\AdminApi\Utils\LocalStorage;
 use Rainestech\Personnel\Entity\Candidates;
 use Rainestech\Personnel\Entity\Recruiters;
+use Rainestech\Personnel\Entity\SkillSet;
 use Rainestech\Personnel\Requests\CandidatesRequest;
 use Rainestech\Personnel\Requests\RecruiterRequest;
 
 class ProfileController extends BaseApiController {
-    use ErrorResponse;
+    use ErrorResponse, LocalStorage;
     public function recruiters() {
         return response()->json(Recruiters::all());
+    }
+
+    public function getSkillSets() {
+        return response()->json(SkillSet::all());
     }
 
     public function candidates() {
@@ -102,7 +108,7 @@ class ProfileController extends BaseApiController {
         if (!$candidates = Candidates::find($request->input('id')))
             return $this->jsonError(404, 'Record Not Found for Update');
 
-        $candidates->fill($request->except(['user', 'logo', 'id']));
+        $candidates->fill($request->except(['user', 'id']));
         $candidates->userId = $request->input('user.id');
         $candidates->update();
 
@@ -142,7 +148,23 @@ class ProfileController extends BaseApiController {
     }
 
     public function removeCandidate($id) {
+        $candidate = Candidates::find($id);
 
+        if (!$candidate) {
+            return $this->jsonError(404, "Candidate Not Found");
+        }
+
+        $candidate->user()->delete();
+        $candidate->projects()->delete();
+
+        foreach ($candidate->docs as $doc) {
+            $this->deleteFile($doc->file->tag, $doc->file->link);
+            $doc->delete();
+        }
+
+        $candidate->delete();
+
+        return response()->json([]);
     }
 
 

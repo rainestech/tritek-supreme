@@ -60,14 +60,17 @@ use Rainestech\AdminApi\Entity\Users;
  * @method static \Illuminate\Database\Eloquent\Builder|Candidates whereTitle($value)
  * @property int|null $bcId
  * @method static \Illuminate\Database\Eloquent\Builder|Candidates whereBcId($value)
+ * @property int|null $bcPage
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidates whereBcPage($value)
  */
 class Candidates extends BaseModel
 {
     protected $table = 'profiles_candidates';
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d h:m:s';
-    protected $with = ['user'];
-    protected $appends = ['fileNo', 'projectNo'];
+    protected $with = ['user', 'projects', 'docs'];
+    protected $appends = ['fileNo', 'projectNo', 'skills'];
+    protected $hidden = ['skillSet'];
 
     public function user()
     {
@@ -82,11 +85,15 @@ class Candidates extends BaseModel
 
     public function projects()
     {
-        return $this->belongsToMany(Projects::class, 'profile_candidates_projects', 'pId', 'cId');
+        return $this->belongsToMany(Projects::class, 'profiles_candidates_projects', 'pId', 'cId');
     }
 
     public function getFileNoAttribute() {
         return $this->docs->count();
+    }
+
+    public function getSkillsAttribute() {
+        return explode(',,,', $this->skillSet);
     }
 
     public function getProjectNoAttribute() {

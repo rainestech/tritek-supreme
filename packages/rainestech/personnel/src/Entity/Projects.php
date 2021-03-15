@@ -65,11 +65,11 @@ class Projects extends BaseModel
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d h:m:s';
 
-    protected $with = ['candidates', 'docs', 'leader'];
+    protected $with = ['docs', 'leader'];
 
     public function candidates()
     {
-        return $this->belongsToMany(Users::class, 'profile_candidates_projects', 'cId', 'pId');
+        return $this->belongsToMany(Users::class, 'profiles_candidates_projects', 'cId', 'pId');
     }
 
     public function docs()

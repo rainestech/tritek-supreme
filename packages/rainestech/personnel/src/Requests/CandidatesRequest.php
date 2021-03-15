@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Rainestech\AdminApi\Errors\FormValidationErrors;
 
-class RecruiterRequest extends FormRequest {
+class CandidatesRequest extends FormRequest {
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,16 +24,13 @@ class RecruiterRequest extends FormRequest {
             case 'PATCH':
             case 'POST': {
                 return [
-                    'id'  => 'integer|exists:profiles_recruiters,id',
-                    'companyName'  => 'required|between:3,250|string',
-                    'description'  => 'required|between:3,250|string',
-                    'email'  => 'required|email',
-                    'website'  => 'nullable|between:3,100|string',
-                    'industry'  => 'required|between:3,200|string',
-                    'type'  => 'string|required|between:2,100',
-                    'size'  => 'string|required|between:2,100',
-                    'logo.id'  => 'integer|required|exists:file_storage,id',
-                    'user.id'  => 'integer|required|exists:admin_users,id',
+                    'id'  => 'integer|exists:profiles_candidates,id',
+                    'description'  => 'required|string',
+                    'skillSet'  => 'required|string',
+                    'title'  => 'required|between:2,200|string',
+                    'name'  => 'required|between:3,200|string',
+                    'email'  => 'required|between:3,200|string',
+                    'user.id'  => 'integer|exists:admin_users,id',
                 ];
             }
 

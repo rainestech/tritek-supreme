@@ -20,10 +20,10 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "mikemclin/laravel-wp-password": "^2.0",
-        "rainestech/admin-api": "dev-main",
-        "rainestech/authorization": "dev-main",
-        "rainestech/personnel": "dev-main",
-        "rainestech/tasks": "dev-main",
+        "owen-it/laravel-auditing": "^12.0",
+        "rainestech/admin-api": "dev-master",
+        "rainestech/authorization": "dev-master",
+        "rainestech/personnel": "dev-master",
         "rbdwllr/reallysimplejwt": "^4.0",
         "socialiteproviders/37signals": "^4.1"
     },
@@ -53,7 +53,6 @@
             "Database\\Seeders\\": "database/seeders/",
             "Rainestech\\AdminApi\\": "packages/rainestech/admin-api/src/",
             "Rainestech\\Authorization\\": "packages/rainestech/authorization/src/",
-            "Rainestech\\Tasks\\": "packages/rainestech/tasks/src/",
             "Rainestech\\Personnel\\": "packages/rainestech/personnel/src/"
         }
     },
@@ -94,13 +93,6 @@
         {
             "type": "path",
             "url": "packages/rainestech/personnel/src",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "packages/rainestech/tasks/src",
             "options": {
                 "symlink": true
             }

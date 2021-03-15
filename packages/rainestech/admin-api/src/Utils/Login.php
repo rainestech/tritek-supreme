@@ -65,8 +65,10 @@ trait Login
         if ($token = auth('api')->attempt(
             $this->credentialsEmail($request))) {
 
-            $this->token = $token;
-            return true;
+            if (auth('api')->user()->adminVerified) {
+                $this->token = $token;
+                return true;
+            }
         }
 
         return false;

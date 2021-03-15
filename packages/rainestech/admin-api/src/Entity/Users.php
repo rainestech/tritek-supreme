@@ -74,6 +74,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereLastPwd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereLastPwdChange($value)
  * @property-read mixed $role
+ * @property string|null $avatar
+ * @method static \Illuminate\Database\Eloquent\Builder|Users whereAvatar($value)
  */
 class Users extends Authenticatable implements JWTSubject
 {
