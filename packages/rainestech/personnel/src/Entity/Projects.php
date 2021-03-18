@@ -58,6 +58,8 @@ use Rainestech\AdminApi\Entity\Users;
  * @method static \Illuminate\Database\Eloquent\Builder|Projects whereBcId($value)
  * @property string|null $completedDate
  * @method static \Illuminate\Database\Eloquent\Builder|Projects whereCompletedDate($value)
+ * @property int|null $bcPage
+ * @method static \Illuminate\Database\Eloquent\Builder|Projects whereBcPage($value)
  */
 class Projects extends BaseModel
 {

@@ -3,6 +3,7 @@
 namespace Rainestech\AdminApi\Utils;
 
 use Illuminate\Http\Request;
+use Rainestech\AdminApi\Entity\LoginLog;
 
 trait Login
 {
@@ -107,6 +108,10 @@ trait Login
 
     public function sendLoginResponse(Request $request, $token) {
         $this->clearLoginAttempts($request);
+
+        $loginLog = new LoginLog();
+        $loginLog->userId = $this->guard()->id();
+        $loginLog->save();
 
         return response()->json( $this->guard()->user())->header('Authorization', 'Bearer '.$token)->header('test', 'test');
     }

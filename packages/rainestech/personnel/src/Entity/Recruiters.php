@@ -2,6 +2,7 @@
 
 namespace Rainestech\Personnel\Entity;
 
+use OwenIt\Auditing\Contracts\Auditable;
 use Rainestech\AdminApi\Entity\BaseModel;
 use Rainestech\AdminApi\Entity\Documents;
 use Rainestech\AdminApi\Entity\FileStorage;
@@ -64,9 +65,13 @@ use Rainestech\AdminApi\Entity\Users;
  * @method static \Illuminate\Database\Eloquent\Builder|Recruiters whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recruiters whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recruiters whereType($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
-class Recruiters extends BaseModel
+class Recruiters extends BaseModel implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'profiles_recruiters';
     protected $guarded = ['id'];
 //    protected $dates = ['joinDate', 'dob'];
@@ -88,7 +93,8 @@ class Recruiters extends BaseModel
 
     public function candidates()
     {
-        return $this->belongsToMany(Candidates::class, 'profiles_recruiters_candidates', 'cId', 'rId');
+        return $this->belongsToMany(Candidates::class, 'profiles_recruiters_candidates', 'rId', 'cId')
+            ->withTimestamps();
     }
 
     public function logo()

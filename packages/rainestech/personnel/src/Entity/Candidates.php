@@ -2,6 +2,7 @@
 
 namespace Rainestech\Personnel\Entity;
 
+use OwenIt\Auditing\Contracts\Auditable;
 use Rainestech\AdminApi\Entity\BaseModel;
 use Rainestech\AdminApi\Entity\FileStorage;
 use Rainestech\AdminApi\Entity\Users;
@@ -62,9 +63,14 @@ use Rainestech\AdminApi\Entity\Users;
  * @method static \Illuminate\Database\Eloquent\Builder|Candidates whereBcId($value)
  * @property int|null $bcPage
  * @method static \Illuminate\Database\Eloquent\Builder|Candidates whereBcPage($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read mixed $skills
  */
-class Candidates extends BaseModel
+class Candidates extends BaseModel implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'profiles_candidates';
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d h:m:s';

@@ -2,70 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb6c9f5e-fe49-4ea7-9d49-f2662c6ef000" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/Basecamp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/audit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_15_142602_create_audits_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/SearchController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/RecruitersPage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/SkillSet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/RecruiterRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/SearchRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/ShortListRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/styles.01268248182729ec0692.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/supreme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/supreme.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers/ContactController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/ContactMessages.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/LoginLog.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/ContactRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/RequestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/RecruiterCandidates.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/RecruiterRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/RecruiterSearchTerms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/RecruiterToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Snippets.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/RecruiterCandidateBulkRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/RecruiterCandidateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/SnippetRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BasecampController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BasecampController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MigrateCandidateData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MigrateCandidateData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/queue.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/queue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/MailTemplateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/MailTemplateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/PasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/PasswordRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RegistrationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RolesRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/RolesRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/SmsTemplateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/SmsTemplateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/UsersRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests/UsersRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/LmsLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/LmsLogin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/Utils/Login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/admin-api/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/admin-api/src/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/authorization/src/Access.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/authorization/src/Access.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/authorization/src/AccessServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/authorization/src/AccessServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/authorization/src/Facades/Access.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/authorization/src/Facades/Access.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/authorization/src/Middleware/AccessMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/authorization/src/Middleware/AccessMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/CalendarController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/ChannelController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/CommentsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Controllers/SearchController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Candidates.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Candidates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Channels.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Profile.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Projects.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Projects.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Recruiters.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/Recruiters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/CandidatesRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/CandidatesRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/ChannelRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests/CommentRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/SkillSet.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity/SkillSet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/rainestech/personnel/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rainestech/personnel/src/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Controllers/TaskController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Entity/Comments.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Entity/Tasks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Requests/TaskFilesRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Requests/TaskPositionRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/Requests/TasksRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/TasksApiServiceProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/rainestech/tasks/src/routes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/10.f4e9152e30db69e65476.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/12.65e533399fd82796eb58.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/2.c4985c5e4fc8a2df932d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/3rdpartylicenses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/8.fbcf58e4e89345eda87b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/9.a9be7c17a6fdacfb196f.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.8595965a79ab0d1ae991.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/runtime.a0019128d52a49df37e6.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tritek--access_log" beforeDir="false" afterPath="$PROJECT_DIR$/tritek--access_log" afterDir="false" />
     </list>
@@ -241,17 +200,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests" />
-      <recent name="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity" />
-      <recent name="$PROJECT_DIR$/app/Jobs" />
-      <recent name="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers" />
       <recent name="$PROJECT_DIR$/packages/rainestech/admin-api/src/Requests" />
+      <recent name="$PROJECT_DIR$/packages/rainestech/admin-api/src/Controllers" />
+      <recent name="$PROJECT_DIR$/packages/rainestech/admin-api/src/Entity" />
+      <recent name="$PROJECT_DIR$/packages/rainestech/personnel/src/Entity" />
+      <recent name="$PROJECT_DIR$/packages/rainestech/personnel/src/Requests" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Built-in Web Server.supreme">
@@ -303,7 +262,7 @@
       <workItem from="1614851988652" duration="4368000" />
       <workItem from="1615292924255" duration="6012000" />
       <workItem from="1615322180582" duration="28376000" />
-      <workItem from="1615727568766" duration="12608000" />
+      <workItem from="1615727568766" duration="30260000" />
     </task>
     <task id="LOCAL-00001" summary="bug fixes">
       <created>1613605483482</created>
@@ -347,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615441776217</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="search feature">
+      <created>1615819585936</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615819585936</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +323,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="basecamp integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="basecamp integration" />
+    <MESSAGE value="search feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="search feature" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="23" key="#PHP" timestamp="1612953063421">
@@ -384,10 +351,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="385" y="265" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1280.777@0.23.1280.777" timestamp="1615376864608" />
-    <state x="223" y="23" width="844" height="777" key="CommitChangelistDialog2" timestamp="1615441775769">
+    <state x="223" y="23" width="844" height="777" key="CommitChangelistDialog2" timestamp="1615819584963">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="223" y="23" width="844" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1615441775769" />
+    <state x="223" y="23" width="844" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1615819584963" />
     <state width="1238" height="197" key="GridCell.Tab.0.bottom" timestamp="1612953122808">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -412,10 +379,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="277" y="235" key="NewPhpClassDialog/0.23.1280.777@0.23.1280.777" timestamp="1615731997579" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1615441783999">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1615819588840">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1615441783999" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1615819588840" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1615732172794">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

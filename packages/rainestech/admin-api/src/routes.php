@@ -7,6 +7,7 @@
 |
 */
 
+use Rainestech\AdminApi\Controllers\ContactController;
 use Rainestech\AdminApi\Controllers\DocumentApiController;
 use Rainestech\AdminApi\Controllers\NavController;
 use Rainestech\AdminApi\Controllers\NotificationTemplateController;
@@ -30,6 +31,13 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('/regenerate-token/{id?}', [UserApiController::class, 'regenerateToken'])->name('users.regenerate.token');
     Route::post('/register/verify', [UserApiController::class, 'registerVerify'])->name('users.register.verify');
     Route::post('/login', [UserApiController::class, 'login'])->name('login');
+});
+
+Route::group(['prefix' => 'contact'], function () {
+    Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('/', [ContactController::class, 'save'])->name('contact.save');
+    Route::put('/', [ContactController::class, 'update'])->name('contact.edit');
+    Route::delete('/remove/{id}', [ContactController::class, 'remove'])->name('contact.remove');
 });
 
 Route::group(['middleware' => 'admin.api'], function () {
