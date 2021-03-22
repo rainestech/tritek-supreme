@@ -4,6 +4,7 @@ namespace Rainestech\Personnel\Entity;
 
 use OwenIt\Auditing\Contracts\Auditable;
 use Rainestech\AdminApi\Entity\BaseModel;
+use Rainestech\AdminApi\Entity\Documents;
 use Rainestech\AdminApi\Entity\FileStorage;
 use Rainestech\AdminApi\Entity\Users;
 
@@ -86,7 +87,7 @@ class Candidates extends BaseModel implements Auditable
 
     public function docs()
     {
-        return $this->belongsToMany(FileStorage::class, 'profiles_candidates_files', 'fId', 'cId');
+        return $this->belongsToMany(Documents::class, 'profiles_candidates_files', 'fId', 'cId');
     }
 
     public function projects()

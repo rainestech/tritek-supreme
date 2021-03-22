@@ -18,6 +18,7 @@ Route::group(['middleware' => 'admin.api', 'prefix' => 'profile'], function () {
     Route::put('/candidates', [ProfileController::class, 'updateCandidate'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('candidate.update');
     Route::delete('/recruiter/remove/{id}', [ProfileController::class, 'removeRecruiter'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('recruiter.delete');
     Route::delete('/candidate/remove/{id}', [ProfileController::class, 'removeCandidate'])->middleware('access:ROLE_PROFILE,ROLE_ADMIN_RECRUITERS')->name('candidate.delete');
+    Route::get('/recruiter/verify/{id}', [ProfileController::class, 'verify'])->middleware('access:ROLE_ADMIN_RECRUITERS')->name('admin.recruiter.verify');
 });
 
 Route::group(['middleware' => 'admin.api'], function () {
@@ -47,9 +48,11 @@ Route::group(['middleware' => 'admin.api', 'prefix' => 'request'], function () {
     Route::get('/list', [RequestController::class, 'indexList'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.list');
     Route::get('/rid/{id}', [RequestController::class, 'getRecruiterRequest'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.recruiter');
     Route::get('/list/rid/{id}', [RequestController::class, 'getRecruiterRequestList'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.recruiter.list');
+    Route::get('/list/cid/{id}', [RequestController::class, 'getCandidateRequestList'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_PROFILE')->name('request.candidates.list');
     Route::post('/', [RequestController::class, 'save'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.save');
     Route::post('/all', [RequestController::class, 'saveAll'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.save.all');
     Route::delete('/remove/{id}', [RequestController::class, 'delete'])->middleware('access:ROLE_ADMIN_RECRUITERS,ROLE_SEARCH')->name('request.delete');
+    Route::get('/toggle/{id}', [RequestController::class, 'toggleRequest'])->middleware('access:ROLE_ADMIN_RECRUITERS')->name('request.toggle.approve');
 });
 
 // Snippets Requests

@@ -17,6 +17,7 @@ use Rainestech\AdminApi\Utils\LmsLogin;
 use Rainestech\AdminApi\Utils\Login;
 use Rainestech\AdminApi\Utils\Register;
 use Rainestech\AdminApi\Utils\Security;
+use Rainestech\Personnel\Entity\Candidates;
 
 class UserApiController extends BaseApiController {
     use Login, Register, Security, ErrorResponse, LmsLogin;
@@ -26,7 +27,11 @@ class UserApiController extends BaseApiController {
     }
 
     public function login(Request $request) {
-        $this->validateLogin($request);
+        try {
+            $this->validateLogin($request);
+        } catch (ValidationException $e) {
+            return $this->jsonError(422, $e->getMessage());
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -53,6 +58,11 @@ class UserApiController extends BaseApiController {
                 return $this->sendFailedLoginResponse($request);
             }
             $user = auth('api')->user();
+
+            if (!$user->companyName && !Candidates::where("email", $user->email)->orderBy('id', 'desc')->exists()) {
+                return response()->json('Candidate profile not found!', 403);
+            }
+
             return $this->prepareLoginResponse($user);
         }
 
@@ -171,6 +181,8 @@ class UserApiController extends BaseApiController {
 
         if ($user) {
             if ($user->updated_at->addMinutes(20) < Carbon::now()) {
+                $mail = new EmailVerification();
+                $mail->sendVerification($user);
                 abort(400, 'Expired Token, a new one has been generated');
             }
 

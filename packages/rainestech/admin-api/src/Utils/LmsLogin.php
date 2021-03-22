@@ -40,11 +40,14 @@ trait LmsLogin
             $user->email_verified_at = Carbon::now();
 
             $user->save();
-            $this->linkCandidateProfile($user);
 
             $this->token = auth('api')->login($user);
             if($role = Roles::find(3)) {
                 $user->roles()->attach($role->id);
+            }
+
+            if (!$this->linkCandidateProfile($user)) {
+                return response()->json('Candidate profile not found!', 403);
             }
 
             return $this->prepareLoginResponse($user);
@@ -60,7 +63,10 @@ trait LmsLogin
 
             $user->avatar = $candidate->avatar;
             $user->save();
+            return true;
         }
+
+        return false;
     }
 
     protected function ping() {

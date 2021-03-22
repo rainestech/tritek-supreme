@@ -55,28 +55,29 @@ trait Register {
     {
         event(new Registered($user = $this->create($request->all(), false)));
 
-//        $role = Roles::where('defaultRole', true)->first();
-//
-//        if ($role) {
-//            $user->roles()->attach($role->id);
-//        }
+        $role = Roles::where('defaultRole', true)->first();
+
+        if ($role) {
+            $user->roles()->attach($role->id);
+        }
 
         $notification = new EmailVerification();
         $notification->sendVerification($user);
 
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
+//        if ($response = $this->registered($request, $user)) {
+//            return $response;
+//        }
 
         $recruiters = new Recruiters($request->except(['logo', 'username', 'password']));
-        $recruiters->userId = $request->input('user.id');
+        $recruiters->userId = $user->id;
         $recruiters->fsId = $request->input('logo.id');
+        $recruiters->editor = $user->id;
         $recruiters->save();
 
         $user->passportID = $request->input('logo.id');
         $user->update();
 
-        return new Response('', 201);
+        return \response()->json($user);
     }
 
     /**
@@ -104,6 +105,7 @@ trait Register {
             'adminVerified' => false,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'companyName' => $data['companyName'],
         ]);
     }
 

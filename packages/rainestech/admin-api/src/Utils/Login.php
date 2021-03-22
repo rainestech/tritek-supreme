@@ -59,14 +59,16 @@ trait Login
         if ($token = auth('api')->attempt(
             $this->credentialsName($request))) {
 
-            $this->token = $token;
-            return true;
+            if (auth('api')->user()->adminVerified && auth('api')->user()->status) {
+                $this->token = $token;
+                return true;
+            }
         }
 
         if ($token = auth('api')->attempt(
             $this->credentialsEmail($request))) {
 
-            if (auth('api')->user()->adminVerified) {
+            if (auth('api')->user()->adminVerified && auth('api')->user()->status) {
                 $this->token = $token;
                 return true;
             }
@@ -117,7 +119,10 @@ trait Login
     }
 
     public function sendFailedLoginResponse(Request $request) {
-        return response('Password Error', 403);
+        if (auth('api')->user()) {
+            return response()->json('Account yet to be activated', 403);
+        }
+        return response()->json('Invalid Username and/or password', 403);
     }
 
     public function redirectPath() {

@@ -167,5 +167,18 @@ class ProfileController extends BaseApiController {
         return response()->json([]);
     }
 
+    public function verify($id) {
+        if (!$recruiter = Recruiters::find($id)) {
+            return $this->jsonError(422, 'Recruiter not found for verification');
+        }
 
+        $user = Users::find($recruiter->userId);
+        if ($user) {
+            $user->adminVerified = true;
+            $user->status = true;
+            $user->save();
+        }
+
+        return response()->json([]);
+    }
 }

@@ -32,6 +32,12 @@ class RequestController extends BaseApiController {
             ->orderBy('id', 'desc')->get());
     }
 
+    public function getCandidateRequestList($id) {
+        return response()->json(RecruiterCandidates::with(['candidate', 'recruiter'])
+            ->where('cId', $id)
+            ->orderBy('id', 'desc')->get());
+    }
+
     public function save(RecruiterCandidateRequest $request) {
         if (!$req = RecruiterCandidates::where('cid', $request->input('cid'))
                         ->where('rid', $request->input('rid'))
@@ -44,6 +50,18 @@ class RequestController extends BaseApiController {
 
         $req->load(['candidate', 'recruiter']);
         return response()->json($req);
+    }
+
+    public function toggleRequest($id) {
+        if (!$request = RecruiterCandidates::find($id)) {
+            return $this->jsonError(406, 'Record Not Found!');
+        }
+
+        $request->approved = $request->approved == 1 ? 0 : 1;
+        $request->save();
+
+        $request->load(['candidate', 'recruiter']);
+        return response()->json($request);
     }
 
     public function saveAll(RecruiterCandidateBulkRequest $request) {
