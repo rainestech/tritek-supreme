@@ -75,7 +75,7 @@ class Candidates extends BaseModel implements Auditable
     protected $table = 'profiles_candidates';
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d h:m:s';
-    protected $with = ['user', 'projects', 'docs'];
+    protected $with = ['user', 'projects'];
     protected $appends = ['fileNo', 'projectNo', 'skills'];
     protected $hidden = ['skillSet'];
 
@@ -85,18 +85,17 @@ class Candidates extends BaseModel implements Auditable
         return $this->belongsTo(Users::class, 'userId');
     }
 
-    public function docs()
-    {
-        return $this->belongsToMany(Documents::class, 'profiles_candidates_files', 'fId', 'cId');
-    }
-
     public function projects()
     {
         return $this->belongsToMany(Projects::class, 'profiles_candidates_projects', 'pId', 'cId');
     }
 
     public function getFileNoAttribute() {
-        return $this->docs->count();
+        if ($this->user) {
+            return $this->user->docs->count();
+        }
+
+        return 0;
     }
 
     public function getSkillsAttribute() {

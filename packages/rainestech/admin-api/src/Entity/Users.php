@@ -76,6 +76,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property-read mixed $role
  * @property string|null $avatar
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereAvatar($value)
+ * @property-read Collection|\Rainestech\AdminApi\Entity\Documents[] $docs
+ * @property-read int|null $docs_count
  */
 class Users extends Authenticatable implements JWTSubject
 {
@@ -119,6 +121,10 @@ class Users extends Authenticatable implements JWTSubject
 
     public function roles() {
         return $this->belongsToMany(Roles::class, 'admin_user_role', 'user_id', 'role_id');
+    }
+
+    public function docs() {
+        return $this->hasMany(Documents::class, 'editor');
     }
 
     public function getPrivilegesAttribute() {

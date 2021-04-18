@@ -31,6 +31,7 @@ class RecruiterRequest extends FormRequest {
                     'website'  => 'nullable|between:3,100|string',
                     'industry'  => 'required|between:3,200|string',
                     'type'  => 'string|required|between:2,100',
+                    'title'  => 'string|required|between:2,200',
                     'size'  => 'string|required|between:2,100',
                     'logo.id'  => 'integer|required|exists:file_storage,id',
                     'user.id'  => 'integer|required|exists:admin_users,id',

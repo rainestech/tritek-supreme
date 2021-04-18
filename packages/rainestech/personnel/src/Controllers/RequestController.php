@@ -3,6 +3,7 @@
 namespace Rainestech\Personnel\Controllers;
 
 use Rainestech\AdminApi\Controllers\BaseApiController;
+use Rainestech\AdminApi\Utils\EmailNotifications;
 use Rainestech\AdminApi\Utils\ErrorResponse;
 use Rainestech\AdminApi\Utils\LocalStorage;
 use Rainestech\Personnel\Entity\RecruiterCandidates;
@@ -48,6 +49,13 @@ class RequestController extends BaseApiController {
         $req->fill($request->except(['id']));
         $req->save();
 
+        if ($req->requested == 1) {
+            $email = new EmailNotifications();
+
+            $email->candidateRequestAlert($req->recruiter->user);
+//            $email->candidateRequestAdmin($req->recruiter->user);
+        }
+
         $req->load(['candidate', 'recruiter']);
         return response()->json($req);
     }
@@ -59,14 +67,19 @@ class RequestController extends BaseApiController {
 
         $request->approved = $request->approved == 1 ? 0 : 1;
         $request->save();
-
         $request->load(['candidate', 'recruiter']);
+
+//        if ($request->approved == 1) {
+//            $email = new EmailNotifications();
+//
+//            $email->($req->recruiter->user);
+//            $email->candidateRequestAdmin($req->recruiter->user);
+//        }
+
         return response()->json($request);
     }
 
     public function saveAll(RecruiterCandidateBulkRequest $request) {
-        clock($request);
-
         foreach ($request->all() as $item) {
             if (!$req = RecruiterCandidates::where('cid', $item['cid'])
                             ->where('rid', $item['rid'])
@@ -74,9 +87,15 @@ class RequestController extends BaseApiController {
                 $req = new RecruiterCandidates();
             }
 
-            $req->fill($request->except(['id']));
+            $req->cid = $item['cid'];
+            $req->rid = $item['rid'];
+            $req->requested = $item['requested'];
             $req->save();
         }
+
+        $mail = new EmailNotifications();
+        $mail->candidateRequestAlert($req->recruiter->user);
+        $mail->candidateRequestAdmin($req->recruiter->user);
 
         return response()->json([]);
     }

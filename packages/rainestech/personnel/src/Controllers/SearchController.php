@@ -77,7 +77,9 @@ class SearchController extends BaseApiController
         $profile = Recruiters::where('userId', auth('api')->id())->first();
 
         if (strtolower($request->input('action')) == 'add')
-            $profile->candidates()->attach($request->input('id'));
+           if (!$profile->candidates()->find($request->input('id'))) {
+               $profile->candidates()->attach($request->input('id'));
+           }
 
         else
             $profile->candidates()->detach($request->input('id'));

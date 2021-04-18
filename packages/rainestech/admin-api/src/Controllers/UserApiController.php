@@ -12,6 +12,7 @@ use Rainestech\AdminApi\Entity\Users;
 use Rainestech\AdminApi\Notifications\EmailVerification;
 use Rainestech\AdminApi\Requests\PasswordRequest;
 use Rainestech\AdminApi\Requests\UsersRequest;
+use Rainestech\AdminApi\Utils\EmailNotifications;
 use Rainestech\AdminApi\Utils\ErrorResponse;
 use Rainestech\AdminApi\Utils\LmsLogin;
 use Rainestech\AdminApi\Utils\Login;
@@ -59,8 +60,10 @@ class UserApiController extends BaseApiController {
             }
             $user = auth('api')->user();
 
-            if (!$user->companyName && !Candidates::where("email", $user->email)->orderBy('id', 'desc')->exists()) {
-                return response()->json('Candidate profile not found!', 403);
+            if ($user->companyName == null) {
+             if (!Candidates::where("email", $user->email)->orderBy('id', 'desc')->exists()) {
+                 return response()->json('Candidate profile not found!', 403);
+             }
             }
 
             return $this->prepareLoginResponse($user);
@@ -128,9 +131,6 @@ class UserApiController extends BaseApiController {
     }
 
     public function me() {
-//        @todo implement in middleware. set user base on token at that level
-//        $token = \request()->bearerToken();
-//        $dbToken =
         return response()->json(auth('api')->user());
     }
 
@@ -191,6 +191,9 @@ class UserApiController extends BaseApiController {
             $user->lastPwdChange = null;
             $user->save();
 
+            $mail = new EmailNotifications();
+            $mail->sendWelcome($user)->sendWaitingApproval($user);
+
             return response()->json(['status' => 'ok']);
         }
 
@@ -240,15 +243,24 @@ class UserApiController extends BaseApiController {
 
         $user->save();
 
-        if ($request->input('role') && Roles::where('role', $request->input('role'))->exists()) {
+        if ($request->input('role') && $role = Roles::where('role', $request->input('role'))->first()) {
             $dbRoles = $user->roles;
 
             foreach ($dbRoles as $rol) {
                 $user->roles()->detach($rol->id);
             }
 
-            $role = Roles::where('role', $request->input('role'))->first();
             $user->roles()->attach($role->id);
+
+            if ($role->role == 'CANDIDATE') {
+                if ($candidate = Candidates::where("email", $user->email)->orderBy('id', 'desc')->first()) {
+                    $candidate->userId = $user->id;
+                    $candidate->update();
+
+                    $user->avatar = $candidate->avatar;
+                    $user->save();
+                }
+            }
         }
 
         return response()->json($user);

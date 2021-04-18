@@ -3,7 +3,9 @@
 namespace Rainestech\Personnel\Controllers;
 
 use Rainestech\AdminApi\Controllers\BaseApiController;
+use Rainestech\AdminApi\Entity\Documents;
 use Rainestech\AdminApi\Entity\Users;
+use Rainestech\AdminApi\Utils\EmailNotifications;
 use Rainestech\AdminApi\Utils\ErrorResponse;
 use Rainestech\AdminApi\Utils\LocalStorage;
 use Rainestech\Personnel\Entity\Candidates;
@@ -36,13 +38,13 @@ class ProfileController extends BaseApiController {
     public function getMyProfile() {
         $user = auth('api')->user();
         if ($user->companyName) {
-            if (!$p = Recruiters::with('docs', 'logo')->where('userId', auth('api')->id())->first())
+            if (!$p = Recruiters::with( 'logo')->where('userId', auth('api')->id())->first())
                 return $this->jsonError(404, 'Recruiter Record Not Found!');
 
             return response()->json($p);
         }
 
-        if (!$p = Candidates::with('docs', 'projects')->where('userId', auth('api')->id())->first())
+        if (!$p = Candidates::with('projects')->where('userId', auth('api')->id())->first())
             return $this->jsonError(404, 'Candidate Record Not Found!');
 
         return response()->json($p);
@@ -124,6 +126,9 @@ class ProfileController extends BaseApiController {
             return $this->jsonError(404, 'Profile Not Found!');
         }
 
+        foreach (Documents::where('editor', $recruiter->userId)->get() as $doc) {
+            $doc->delete();
+        }
         $recruiter->user()->delete();
         $recruiter->delete();
         return response()->json([]);
@@ -135,11 +140,17 @@ class ProfileController extends BaseApiController {
         $candidate = Candidates::where('userId', $user->id)->first();
 
         if ($recruiter) {
+            foreach (Documents::where('editor', $recruiter->userId)->get() as $doc) {
+                $doc->delete();
+            }
             $recruiter->user()->delete();
             $recruiter->delete();
         }
 
         if ($candidate) {
+            foreach (Documents::where('editor', $candidate->userId)->get() as $doc) {
+                $doc->delete();
+            }
             $candidate->user()->delete();
             $candidate->delete();
         }
@@ -154,13 +165,11 @@ class ProfileController extends BaseApiController {
             return $this->jsonError(404, "Candidate Not Found");
         }
 
-        $candidate->user()->delete();
-        $candidate->projects()->delete();
-
-        foreach ($candidate->docs as $doc) {
-            $this->deleteFile($doc->file->tag, $doc->file->link);
+        foreach (Documents::where('editor', $candidate->userId)->get() as $doc) {
             $doc->delete();
         }
+        $candidate->user()->delete();
+        $candidate->projects()->delete();
 
         $candidate->delete();
 
@@ -173,10 +182,13 @@ class ProfileController extends BaseApiController {
         }
 
         $user = Users::find($recruiter->userId);
-        if ($user) {
+        if ($user && !$user->adminVerified) {
             $user->adminVerified = true;
             $user->status = true;
             $user->save();
+
+            $mail = new EmailNotifications();
+            $mail->sendVerificationApproved($user);
         }
 
         return response()->json([]);

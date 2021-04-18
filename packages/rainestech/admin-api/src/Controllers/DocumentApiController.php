@@ -55,7 +55,7 @@ class DocumentApiController extends BaseApiController {
         $file = storage_path('app' . DIRECTORY_SEPARATOR . $fs->tag . DIRECTORY_SEPARATOR . $fs->link);
 
         $response = response()->file($file);
-        ob_end_clean();
+        if (ob_get_length()) ob_end_clean();
         return $response;
     }
 

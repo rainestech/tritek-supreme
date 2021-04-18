@@ -27,12 +27,9 @@
     <meta content="#ffffff" name="msapplication-TileColor">
     <meta content="/assets/ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#ffffff" name="theme-color">
-    <title>Project Supreme</title>
+    <title>Tritek Careers</title>
     <link rel="stylesheet" href="/styles.01268248182729ec0692.css"></head>
 <body class="app">
 <!-- App Loading... -->
-<script src="/runtime.8b19b28afb339a670268.js" defer></script>
-<script src="/polyfills-es5.322d0fe33762b08f4fa9.js" nomodule defer></script>
-<script src="/polyfills.f9d4e79c0796cf605b78.js" defer></script>
-<script src="/main.bd50dbf19948ce699777.js" defer></script></body>
+<script src="/runtime.a0e6ae51a896c78e0992.js" defer></script><script src="/polyfills-es5.322d0fe33762b08f4fa9.js" nomodule defer></script><script src="/polyfills.f9d4e79c0796cf605b78.js" defer></script><script src="/main.043a9f56f1c43815d8a1.js" defer></script></body>
 </html>

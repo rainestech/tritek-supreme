@@ -14,6 +14,7 @@ use Rainestech\AdminApi\Entity\Users;
 use Rainestech\AdminApi\Notifications\EmailVerification;
 use Rainestech\AdminApi\Requests\RegistrationRequest;
 use Rainestech\AdminApi\Requests\UsersRequest;
+use Rainestech\Personnel\Entity\Candidates;
 use Rainestech\Personnel\Entity\Recruiters;
 
 trait Register {
@@ -27,8 +28,17 @@ trait Register {
     public function register(UsersRequest $request) {
         event(new Registered($user = $this->create($request->all(), true)));
 
-        foreach ($request->input('role') as $role) {
-            $user->roles()->attach($role['id']);
+        if ($role = Roles::where('role', $request->input('role'))->first()) {
+            $user->roles()->attach($role->id);
+            if ($role->role == 'CANDIDATE') {
+                if ($candidate = Candidates::where("email", $user->email)->orderBy('id', 'desc')->first()) {
+                    $candidate->userId = $user->id;
+                    $candidate->update();
+
+                    $user->avatar = $candidate->avatar;
+                    $user->save();
+                }
+            }
         }
 
         if ($request->has('status')) {

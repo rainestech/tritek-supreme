@@ -6,10 +6,18 @@ namespace Rainestech\AdminApi\Controllers;
 
 use Rainestech\AdminApi\Entity\MailTemplates;
 use Rainestech\AdminApi\Entity\SmsTemplates;
+use Rainestech\AdminApi\Notifications\EmailVerification;
 use Rainestech\AdminApi\Requests\MailTemplateRequest;
 use Rainestech\AdminApi\Requests\SmsTemplateRequest;
+use Rainestech\AdminApi\Utils\EmailNotifications;
 
 class NotificationTemplateController extends BaseApiController {
+    public function testMail() {
+        $email = new EmailNotifications();
+        $email->testMail();
+        return true;
+    }
+
     public function mailIndex() {
         return response()->json(MailTemplates::all());
     }

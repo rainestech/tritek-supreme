@@ -42,6 +42,7 @@ trait LmsLogin
             $user->save();
 
             $this->token = auth('api')->login($user);
+            clock($token);
             if($role = Roles::find(3)) {
                 $user->roles()->attach($role->id);
             }
@@ -90,6 +91,8 @@ trait LmsLogin
         $token->userID = $user->id;
         $token->token = $this->token;
         $token->save();
+
+
 
         $location = $this->getLocation();
         $userDevice = UserDevice::where('userID', $user->id)

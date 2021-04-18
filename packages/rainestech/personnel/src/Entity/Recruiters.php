@@ -86,11 +86,6 @@ class Recruiters extends BaseModel implements Auditable
         return $this->belongsTo(Users::class, 'userId');
     }
 
-    public function docs()
-    {
-        return $this->belongsToMany(Documents::class, 'profiles_recruiters_files', 'fId', 'rId');
-    }
-
     public function candidates()
     {
         return $this->belongsToMany(Candidates::class, 'profiles_recruiters_candidates', 'rId', 'cId')
@@ -103,7 +98,11 @@ class Recruiters extends BaseModel implements Auditable
     }
 
     public function getFileNoAttribute() {
-        return $this->docs->count();
+        if ($this->user) {
+            return $this->user->docs->count();
+        }
+
+        return 0;
     }
 
     public function getNameAttribute() {

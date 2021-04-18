@@ -23,3 +23,4 @@ Route::get('/basecamp/projects', [\App\Http\Controllers\BasecampController::clas
 Route::get('/basecamp/people', [\App\Http\Controllers\BasecampController::class, 'people'])->name('basecamp.people');
 Route::get('/basecamp/docs', [\App\Http\Controllers\BasecampController::class, 'docs'])->name('basecamp.docs');
 Route::get('/basecamp/run', [\App\Http\Controllers\BasecampController::class, 'runJobs'])->name('basecamp.job');
+Route::get('/test/mail', [\Rainestech\AdminApi\Controllers\NotificationTemplateController::class, 'testMail'])->name('test.mail');
